@@ -10,17 +10,21 @@ const div = document.querySelector("div#boxes");
 let amount = 0;
 
 buttonCreate.addEventListener("click", createInputValue);
+buttonDestroy.addEventListener("click", destroyBoxes);
 
 function createBoxes(amount) {
+  let x = 20;
   for (let i = 0; i < amount; i += 1) {
-    // const createDiv = document.createElement("div");
-    // div.append(createDiv);
-    const divMarkup = `<div style="background-color:${getRandomHexColor()}; width:30px; height:30px;"></div>`;
-    console.log(divMarkup);
+    x += 10;
+    const divMarkup = `<div style="background-color:${getRandomHexColor()}; width:${x}px; height:${x}px; border:1px solid black"></div>`;
     div.insertAdjacentHTML("beforeend", divMarkup);
   }
 }
 function createInputValue() {
   amount = input.value;
   createBoxes(amount);
+}
+function destroyBoxes() {
+  input.value = "";
+  div.innerHTML = "";
 }
